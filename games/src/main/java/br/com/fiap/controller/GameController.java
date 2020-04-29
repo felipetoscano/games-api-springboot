@@ -27,21 +27,24 @@ public class GameController {
 	GameRepository repository = GameRepository.getInstance();
 
 	@GetMapping("{page}")
-	public String redirect(@PathVariable("page") String page, @RequestParam(required = false) Long id, @ModelAttribute("gameModel") Model model) {
+	public String redirect(@PathVariable("page") String page, 
+						   @RequestParam(required = false) Long id, 
+						   @ModelAttribute("gameModel") GameModel gameModel,
+						   Model model) {
 
-		System.out.println("Page:" + page);
-
-		if ("about".equals(page) || "edit".equals(page)) {
-
+		if ("about".equals(page) || 
+		    "edit".equals(page)) {
+			
 			GameModel game = repository.findByID(id);
 			model.addAttribute("game", game);
+			
 		} else if ("home".equals(page)) {
+			
 			List<GameModel> games = repository.findAll();
 			model.addAttribute("games", games);
 		}
 
 		return page;
-		// Adicionar ModelAttribute para validação
 	}
 
 	@PostMapping("/new")
