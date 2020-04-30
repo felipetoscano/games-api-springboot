@@ -21,62 +21,62 @@
 <body>
 	<table class="geral">
 		<tr>
-			<td class="back-button" rowspan="2">
-				<a href="home"> 
-					<img src="${images}/back-button.png" width="80" alt="Voltar">
-				</a>
-			</td>
+			<td class="back-button" rowspan="2"><a href="home"> <img
+					src="${images}/back-button.png" width="80" alt="Voltar">
+			</a></td>
 			<td class="header">
 				<p>Cadastrar Novo Jogo</p>
 			</td>
 		</tr>
 		<tr>
-			<td class="itens">
-				<form:form modelAttribute="gameModel" action="${contextPath}/new" method="post">
-				<spring:hasBindErrors name="gameModel">
-					<div role="alert">
-						<form:errors path="*"/>
+			<td class="itens"><form:form modelAttribute="gameModel"
+					action="${contextPath}/new" method="post">
+
+					<label for="name">Nome: </label>
+					<form:input class="in" type="text" path="name" id="name" />
+					<br>
+					<form:errors class="error" path="name" />
+
+					<br />
+
+					<label for="price">Preço:</label>
+					<form:input type="number" id="price" path="price" />
+					<br>
+					<form:errors class="error" path="price" />
+					<br />
+
+					<label for="category">Categoria: </label>
+					<form:input type="text" path="category" id="category" />
+					<br>
+					<form:errors class="error" path="category" />
+					<br />
+
+					<label for="description">Descrição: </label>
+					<form:input type="text" path="description" id="description" />
+					<br>
+					<form:errors class="error" path="description" />
+					<br />
+
+					<label for="image">Capa do Jogo: </label>
+					<form:input type="text" path="image" id="image"
+						placeholder="Insira aqui a url da imagem" />
+						<br>
+					<form:errors class="error" path="image" />
+					<br />
+
+					<label for="urlBuy">Url de Compra: </label>
+					<form:input type="text" path="urlBuy" id="urlBuy" />
+					<br>
+					<form:errors class="error" path="urlBuy" />
+					<br />
+
+					<div id="div-save">
+						<button type="submit" class="save-button">
+							<img src="${images}/save-button.png">
+						</button>
 					</div>
-				</spring:hasBindErrors>
 
-				<label for="name">Nome: </label>
-				<form:input type="text" path="name" id="name"/>
-				<font color="red"><form:errors path="name"/></font>
-				<br/>
-				
-				<label for="price">Preço:</label>
-				<form:input type="number" id="price" path="price"/>
-				<font color="red"><form:errors path="price"/></font>
-				<br/>
-
-				<label for="category">Categoria: </label>
-				<form:input type="text" path="category" id="category" />
-				<font color="red"><form:errors path="category"/></font>
-				<br/>
-
-				<label for="description">Descrição: </label>
-				<form:input type="text" path="description" id="description" />
-				<font color="red"><form:errors path="description"/></font>
-				<br/>
-
-				<label for="image">Capa do Jogo: </label>
-				<form:input type="text" path="image" id="image"/>
-				<font color="red"><form:errors path="image" /></font>
-				<br/>
-
-				<label for="urlBuy">Url de Compra: </label>
-				<form:input type="text" path="urlBuy" id="urlBuy"/>
-				<font color="red"><form:errors path="urlBuy"/></font>
-				<br/>
-
-				<div id="div-save">
-					<button type="submit" class="save-button">
-						<img src="${images}/save-button.png">
-					</button>
-				</div>
-
-				</form:form>
-			</td>
+				</form:form></td>
 		</tr>
 	</table>
 </body>

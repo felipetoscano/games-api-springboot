@@ -50,7 +50,9 @@
 				<label id="info">${gameModel.description}</label>
 				<br><br>
 				<label for="urlBuy">Url de Compra:</label>
-				<label id="info">${gameModel.urlBuy}</label>
+				<label id="info">
+					<a href="${gameModel.urlBuy}">${gameModel.urlBuy}</a>
+				</label>
 			</td>
 		</tr>
 		<tr style="height: 80px;">
@@ -62,7 +64,9 @@
 				</td>
 				<td></td>
 				<td class="buttons" align="left">
-					<input type="submit" value="Excluir"> 
+					<button type="submit" class="delete-button">
+						<img src="${images}/delete-button.png" width="80" alt="Deletar">
+					</button>
 				</td>
 			</form:form>
 		</tr>
