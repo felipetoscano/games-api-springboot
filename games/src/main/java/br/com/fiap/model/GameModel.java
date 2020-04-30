@@ -13,6 +13,10 @@ public class GameModel {
 	private String description;
 	private String urlBuy;
 	
+	public GameModel() {
+		
+	}
+	
 	public GameModel(String image, String name, String category, float price, String description, String urlBuy) {
 		super();
 		this.image = image;

@@ -27,21 +27,24 @@ public class GameController {
 	GameRepository repository = GameRepository.getInstance();
 
 	@GetMapping("{page}")
-	public String redirect(@PathVariable("page") String page, @RequestParam(required = false) Long id, @ModelAttribute("gameModel") Model model) {
+	public String redirect(@PathVariable("page") String page, 
+						   @RequestParam(required = false) Long id, 
+						   @ModelAttribute("gameModel") GameModel gameModel,
+						   Model model) {
 
-		System.out.println("Page:" + page);
-
-		if ("about".equals(page) || "edit".equals(page)) {
-
+		if ("about".equals(page) || 
+		    "edit".equals(page)) {
+			
 			GameModel game = repository.findByID(id);
 			model.addAttribute("game", game);
+			
 		} else if ("home".equals(page)) {
+			
 			List<GameModel> games = repository.findAll();
 			model.addAttribute("games", games);
 		}
 
 		return page;
-		// Adicionar ModelAttribute para validação
 	}
 
 	@PostMapping("/new")
@@ -69,10 +72,7 @@ public class GameController {
 		redirectAttributes.addFlashAttribute("messages", "Informações do game alteradas com sucesso!");
 		
 		return "redirect:/home";
-		// Criar validações
-		// Criar mensagem de validação
-		// Perguntar para o professor se realmente precisa do "@PathVariable("id") long
-		// id"
+		
 	}
 
 	@DeleteMapping("{id}")
@@ -82,7 +82,6 @@ public class GameController {
 		redirectAttributes.addFlashAttribute("messages", "Game excluído com sucesso!");
 		
 		return "redirect:/home";
-		// Criar mensagem de validação
 	}
 
 }
