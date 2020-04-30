@@ -34,42 +34,41 @@
 			<td class="itens-edit"><form:form modelAttribute="gameModel"
 					action="${contextPath}/edit" method="PUT">
 
-					<spring:hasBindErrors name="gameModel">
-						<div role="alert">
-							<form:errors path="*" />
-						</div>
-					</spring:hasBindErrors>
-
 					<form:input type="hidden" path="id" id="id" />
 
 					<label for="name">Nome: </label>
 					<form:input type="text" path="name" id="name" />
-					<form:errors path="name" />
+					<br>
+					<form:errors class="error" path="name" />
 					<br><br>
 
 					<label for="price">Preço:</label>
 					<form:input type="number" id="price" path="price" />
-					<form:errors path="price" />
+					<br>
+					<form:errors class="error" path="price" />
 					<br><br>
 
 					<label for="category">Categoria: </label>
 					<form:input type="text" path="category" id="category" />
-					<form:errors path="category" />
+					<br>
+					<form:errors class="error" path="category" />
 					<br><br>
 
 					<label for="description">Descrição: </label>
 					<form:input type="text" path="description" id="description" />
-					<form:errors path="description" />
+					<br>
+					<form:errors class="error" path="description" />
 					<br><br>
 
 					<label for="image">Capa do Jogo: </label>
 					<form:input type="text" path="image" id="image" />
-					<form:errors path="image" />
+					<br>
+					<form:errors class="error" path="image" />
 					<br><br>
 
 					<label for="urlBuy">Url de Compra: </label>
 					<form:input type="text" path="urlBuy" id="urlBuy" />
-					<form:errors path="urlBuy" />
+					<form:errors class="error" path="urlBuy" />
 					<br><br>
 
 					<div id="div-save">
