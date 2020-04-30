@@ -32,8 +32,7 @@
 		</tr>
 		<tr>
 			<td class="itens">
-			<!-- Arrumar redirect botão e form-->
-				<form:form modelAttribute="gameModel" action="${contextPath}/home" method="post">
+				<form:form modelAttribute="gameModel" action="${contextPath}/new" method="post">
 				<spring:hasBindErrors name="gameModel">
 					<div role="alert">
 						<form:errors path="*"/>

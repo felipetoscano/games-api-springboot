@@ -2,6 +2,7 @@ package br.com.fiap.controller;
 
 import java.util.List;
 
+
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.fiap.model.GameModel;
 import br.com.fiap.repository.GameRepository;
 
+/*
+ * 
+ * 
+ * URL DA PÁGINA INICIAL:
+ * localhost:8080/games/home 
+ *
+ * 
+ * 
+ */
+
 @Controller
 @RequestMapping("/")
 public class GameController {
@@ -32,16 +43,17 @@ public class GameController {
 						   @ModelAttribute("gameModel") GameModel gameModel,
 						   Model model) {
 
-		if ("about".equals(page) || 
-		    "edit".equals(page)) {
-			
-			GameModel game = repository.findByID(id);
-			model.addAttribute("game", game);
-			
-		} else if ("home".equals(page)) {
+		if("home".equals(page)) {
 			
 			List<GameModel> games = repository.findAll();
 			model.addAttribute("games", games);
+		}
+		
+		else if ("about".equals(page) ||
+				  "edit".equals(page)) {
+			
+			GameModel game = repository.findByID(id);
+			model.addAttribute("gameModel", game);
 		}
 
 		return page;
@@ -50,32 +62,28 @@ public class GameController {
 	@PostMapping("/new")
 	public String create(@Valid GameModel game, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
-		if (bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) 
 			return "new";
-		}
 
 		repository.create(game);
 		redirectAttributes.addFlashAttribute("messages", "Game cadastrado com sucesso!");
 
 		return "redirect:/home";
-
 	}
 
 	@PutMapping("/edit")
 	public String update(@Valid GameModel game, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 		
-		if (bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) 
 			return "edit";
-		}
 		
 		repository.update(game);
 		redirectAttributes.addFlashAttribute("messages", "Informações do game alteradas com sucesso!");
 		
 		return "redirect:/home";
-		
 	}
 
-	@DeleteMapping("{id}")
+	@DeleteMapping("/delete/{id}")
 	public String deleteByID(@PathVariable("id") long id, RedirectAttributes redirectAttributes) {
 		
 		repository.deleteByID(id);

@@ -4,6 +4,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+<%@ page isErrorPage="true" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,13 +34,15 @@
 		</tr>
 		<tr>
 			<td class="itens">
-				<!-- Arrumar redirect botão e redirect form-->
-				<form:form modelAttribute="gameModel" action="${contextPath}/game/${gameModel.id}" method="put">
+				<form:form modelAttribute="gameModel" action="${contextPath}/edit" method="PUT">
+				
 				<spring:hasBindErrors name="gameModel">
 					<div role="alert">
 						<form:errors path="*"/>
 					</div>
 				</spring:hasBindErrors>
+					
+				<form:input type="hidden" path="id" id="id"/>
 
 				<label for="name">Nome: </label>
 				<form:input type="text" path="name" id="name"/>

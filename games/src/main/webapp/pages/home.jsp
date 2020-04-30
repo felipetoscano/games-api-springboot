@@ -24,8 +24,7 @@
 			<td align="center">
 				<div class="estante">
 					<c:forEach items="${games}" var="game">
-					<!-- Arrumar direcionamento do detalhe -->
-						<a href="${contextPath}/page/${game.id}" style="text-decoration: none">
+						<a href="${contextPath}/about?id=${game.id}" style="text-decoration: none">
 							<img id="objeto" src="${game.image}">
 						</a>
 					</c:forEach>

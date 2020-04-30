@@ -9,7 +9,7 @@ public class GameModel {
 	private String image;
 	private String name;
 	private String category;
-	private float price;
+	private double price;
 	private String description;
 	private String urlBuy;
 	
@@ -17,7 +17,18 @@ public class GameModel {
 		
 	}
 	
-	public GameModel(String image, String name, String category, float price, String description, String urlBuy) {
+	public GameModel(long id, String image, String name, String category, double price, String description, String urlBuy) {
+		super();
+		this.id = id;
+		this.image = image;
+		this.name = name;
+		this.category = category;
+		this.price = price;
+		this.description = description;
+		this.urlBuy = urlBuy;
+	}
+	
+	public GameModel(String image, String name, String category, double price, String description, String urlBuy) {
 		super();
 		this.image = image;
 		this.name = name;
@@ -63,11 +74,11 @@ public class GameModel {
 	}
 	
 	@DecimalMin(value = "0.1", message = "O preço deve ter um valor minimo de 0.0")
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 	
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	
