@@ -72,10 +72,7 @@ public class GameController {
 		redirectAttributes.addFlashAttribute("messages", "Informações do game alteradas com sucesso!");
 		
 		return "redirect:/home";
-		// Criar validações
-		// Criar mensagem de validação
-		// Perguntar para o professor se realmente precisa do "@PathVariable("id") long
-		// id"
+		
 	}
 
 	@DeleteMapping("{id}")
@@ -85,7 +82,6 @@ public class GameController {
 		redirectAttributes.addFlashAttribute("messages", "Game excluído com sucesso!");
 		
 		return "redirect:/home";
-		// Criar mensagem de validação
 	}
 
 }
